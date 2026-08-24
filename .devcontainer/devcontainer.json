@@ -1,0 +1,31 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "hostRequirements": {
+    "cpus": 2
+  },
+  "waitFor": "onCreateCommand",
+  "updateContentCommand": "python -m pip install -r requirements.txt && python manage.py migrate --noinput",
+  "postCreateCommand": "cp -n .env.example .env || true",
+  "postAttachCommand": {
+    "server": "python manage.py runserver 0.0.0.0:8000"
+  },
+  "customizations": {
+    "codespaces": {
+      "openFiles": [
+        "meu_app/templates/dashboard.html"
+      ]
+    },
+    "vscode": {
+      "extensions": [
+        "ms-python.python"
+      ]
+    }
+  },
+  "portsAttributes": {
+    "8000": {
+      "label": "Django",
+      "onAutoForward": "openPreview"
+    }
+  },
+  "forwardPorts": [8000]
+}
