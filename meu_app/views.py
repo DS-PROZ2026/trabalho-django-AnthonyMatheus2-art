@@ -8,7 +8,7 @@ def painel_dashboard(request):
     equipamentos = Equipamento.objects.all().order_by("id")
     return render(
         request,
-        "meu_app/dashboard.html",
+        "dashboard.html",
         {"equipamentos": equipamentos, "total": equipamentos.count()},
     )
 

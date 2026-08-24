@@ -27,18 +27,18 @@ SECRET_KEY = config("SECRET_KEY", default="django-insecure-dev-key")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG", default=True, cast=bool)
 
-ALLOWED_HOSTS = [
-    "localhost",
-    "127.0.0.1",
-]
 codespace_name = os.getenv("CODESPACE_NAME")
 codespace_domain = os.getenv("GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN")
 
-CSRF_TRUSTED_ORIGINS = []
-if codespace_name and codespace_domain:
-    CSRF_TRUSTED_ORIGINS.append(
-        f"https://{codespace_name}-8000.{codespace_domain}"
-    )
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.githubpreview.dev',
+    'https://*.app.github.dev',
+    'https://localhost:8000',
+    'http://127.0.0.1:8000',
+]
+
+# Libera o acesso para os hosts
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
