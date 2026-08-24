@@ -27,8 +27,10 @@ SECRET_KEY = config("SECRET_KEY", default="django-insecure-dev-key")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG", default=True, cast=bool)
 
-ALLOWED_HOSTS = [host.strip() for host in config("ALLOWED_HOSTS", default="*").split(",") if host.strip()]
-
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+]
 codespace_name = os.getenv("CODESPACE_NAME")
 codespace_domain = os.getenv("GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN")
 

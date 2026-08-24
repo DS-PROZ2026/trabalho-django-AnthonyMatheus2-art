@@ -15,7 +15,7 @@ def painel_dashboard(request):
 
 def detalhe_equipamento(request, id):
     equipamento = get_object_or_404(Equipamento, id=id)
-    return render(request, "meu_app/detalhe_equipamento.html", {"equipamento": equipamento})
+    return render(request, "detalhe_equipamento.html", {"equipamento": equipamento})
 
 
 def cadastrar_equipamento(request):
@@ -27,7 +27,7 @@ def cadastrar_equipamento(request):
     else:
         form = EquipamentoForm()
 
-    return render(request, "meu_app/cadastrar_equipamento.html", {"form": form})
+    return render(request, "cadastrar_equipamento.html", {"form": form})
 
 
 def editar_equipamento(request, id):
@@ -41,7 +41,7 @@ def editar_equipamento(request, id):
     else:
         form = EquipamentoForm(instance=equipamento)
 
-    return render(request, "meu_app/cadastrar_equipamento.html", {"form": form})
+    return render(request, "cadastrar_equipamento.html", {"form": form})
 
 
 def deletar_equipamento(request, id):
